@@ -52,7 +52,7 @@ class Bot(commands.Bot):
     async def on_ready(self) -> None:
         LOGGER.log(level=logging.INFO, msg=f'Logged in as {client.user} {client.user.id}')
         print('bot online') # for pterodactyl console for online status
-        await client.change_presence(activity=discord.Game(name="Fucking your bitch"))
+        await client.change_presence(activity=discord.Game(name="Currently useless"))
 
 client = Bot()
 console = Console(client=client)
