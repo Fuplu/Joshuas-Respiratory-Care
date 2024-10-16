@@ -19,10 +19,14 @@ class ItemCog(commands.Cog):
 
 
     @app_commands.command(name="item", description=f"Item")
-    async def item(self, interaction: discord.Interaction):
+    @app_commands.describe(
+        jcode="Search for an item"
+    )
+    async def item(self, interaction: discord.Interaction, jcode: str):
         
         items = await db.execute(
-            "SELECT name,jcode,ref,location FROM ITEMS LIMIT 1"
+            "SELECT name,jcode,ref,location FROM ITEMS WHERE "
+            f"jcode='{jcode}' LIMIT 1"
         )
         
         temp = []
