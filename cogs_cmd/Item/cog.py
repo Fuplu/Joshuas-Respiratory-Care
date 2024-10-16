@@ -22,13 +22,15 @@ class ItemCog(commands.Cog):
     async def item(self, interaction: discord.Interaction):
         
         items = await db.execute(
-            "SELECT * FROM ITEMS"
+            "SELECT name,jcode,ref,location FROM ITEMS LIMIT 1"
         )
         
         temp = []
         temp.append(
             "From database:\n"
-            f"{items}"
+            f"**ITEM**: {items[0][1]}**/**{items[0][0]}\n"
+            f"**REF**: {items[0][2]}\n"
+            f"**LOCATION**: {items[0][3]}"
         )
         
         embed = discord.Embed(
