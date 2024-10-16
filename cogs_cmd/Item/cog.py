@@ -25,8 +25,19 @@ class ItemCog(commands.Cog):
             "SELECT * FROM ITEMS"
         )
         
+        temp = []
+        temp.append(
+            "From database:\n"
+            f"{items}"
+        )
+        
+        embed = discord.Embed(
+            description=''.join(temp),
+            color=discord.Color.green()
+        )
+        
         await interaction.response.send_message(
-            content=items
+            embed=embed
         )
 
 
